@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡</title>
+    <style type="text/css">
+        /* CSS样式制作 */
+        * {margin:0px;padding:0px;font:12px normal "Microsoft YaHei";}
+        #fdiv{margin:20px;padding:10px;width:340px;}
+        #fdiv ul li.active{border-top:2px solid red;border-bottom:2px solid #fff;}
+        .hidden{display:none;}
+        #fdiv ul{
+            margin-bottom:6px;
+            padding:0 0 0 5px;
+        }
+        #fdiv ul li{
+            list-style-type:none;
+            border:1px solid #ccc;
+            border-bottom:2px solid red;
+            margin-right:7px;
+            padding:7px;
+            display:inline;
+        }
+        #fdiv div{
+            border:1px solid blue;
+            border-top:2px solid red;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+<!-- HTML页面布局 -->
+<div id="fdiv">
+    <ul><li class="active">tab1</li><li>tab2</li><li>tab3</li></ul>
+    <div class="">这里是tab1内容...<br>
+        这里是tab1内容...<br>
+        假程序猿的自我修养<br>
+        这里是tab1内容...</div>
+    <div class="hidden"> 这里是tab2内容...<br>
+        这里是tab2内容...<br>
+        论如何高调剁手<br>
+        这里是tab2内容...</div>
+    <div class="hidden"> 这里是tab3内容...<br>
+        这里是tab3内容...<br>
+        这里是tab3内容巴拉巴拉...<br>
+        这里是tab3内容...</div>
+</div>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var fdiv=document.getElementById("fdiv");
+        var ul=fdiv.getElementsByTagName("ul")[0];
+        var li=ul.getElementsByTagName("li");
+        var div=fdiv.getElementsByTagName("div");
+        for(i=0,len=li.length;i<len;i++){
+            li[i].index=i;
+            li[i].onclick=function(){
+                for(j=0;j<len;j++){
+                    li[j].className="";
+                    div[j].className="hidden";
+                }
+                this.className="active";
+                div[this.index].className="";
+            }
+        }
+    }
+</script>
+</body>
+</html>
